@@ -16,4 +16,7 @@ More of the most important adventages of covalent inhibidors, is their high bind
 A covalent labeling is achieved when a leaving group from an electro-deficient aromatic ring is replaced by a nucleophile, such as cysteine thiol
 
 
+EXPLICAR REQUISITS DE COM INSTAL·LAR CHEMPROP.
+PASSOS PER FER-HO TOT
+
 
