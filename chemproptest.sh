@@ -1,4 +1,4 @@
-conda init tfm
+#conda activate tfm
 #descarrega els fitxers
 #HOME es una variable de la shell, t'ho guarda al inici 
 
@@ -6,9 +6,9 @@ CHEMPROP_RES=$HOME/scratch #aquí li dones una variable amb un path
 
 mkdir $CHEMPROP_RES #Crees el directori de la variable 
 
-wget https://github.com/chemprop/chemprop/blob/master/data.tar.gz -O $CHEMPROP_RES/data.tar.gz
-tar zxvf $CHEMPROP_RES/data.tar.gz #descomprimir el tar, això crearà la carpeta data
-wget https://github.com/chemprop/chemprop/blob/master/train.py -O $CHEMPROP_RES/train.py #descarreguem i guardem l'script de train.py
+#wget https://github.com/chemprop/chemprop/raw/master/data.tar.gz -O $CHEMPROP_RES/data.tar.gz
+#tar xvf $CHEMPROP_RES/data.tar.gz #descomprimir el tar, això crearà la carpeta data
+wget https://github.com/chemprop/chemprop/raw/master/train.py -O $CHEMPROP_RES/train.py #descarreguem i guardem l'script de train.py
 
 #Train
 python $CHEMPROP_RES/train.py  --data_path $CHEMPROP_RES/data/tox21.csv --dataset_type classification --save_dir $CHEMPROP_RES/tox21_checkpoint
