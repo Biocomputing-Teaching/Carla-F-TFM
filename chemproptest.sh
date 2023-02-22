@@ -6,8 +6,8 @@ CHEMPROP_RES=$HOME/scratch #aquí li dones una variable amb un path
 
 mkdir $CHEMPROP_RES #Crees el directori de la variable 
 
-#wget https://github.com/chemprop/chemprop/raw/master/data.tar.gz -O $CHEMPROP_RES/data.tar.gz
-#tar xvf $CHEMPROP_RES/data.tar.gz #descomprimir el tar, això crearà la carpeta data
+wget https://github.com/chemprop/chemprop/raw/master/data.tar.gz -O $CHEMPROP_RES/data.tar.gz
+tar xvf $CHEMPROP_RES/data.tar.gz #descomprimir el tar, això crearà la carpeta data
 wget https://github.com/chemprop/chemprop/raw/master/train.py -O $CHEMPROP_RES/train.py #descarreguem i guardem l'script de train.py
 
 #Train
