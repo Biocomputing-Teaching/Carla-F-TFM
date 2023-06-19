@@ -5,3 +5,4 @@ node_modules
 *.fls
 *.log
 *synctex.gz
+.chembl_ws_client__0.10.8
