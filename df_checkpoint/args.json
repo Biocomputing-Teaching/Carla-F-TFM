@@ -89,8 +89,11 @@
     "reaction_mode": "reac_diff",
     "reaction_solvent": false,
     "reproducibility": {
-        "command_line": "python /Users/carlafeliu/opt/anaconda3/envs/tfm/bin/chemprop_train --data_path /Users/carlafeliu/Docs/Master/TFM/github/TFM/code/data_chemprop/chemprop_train.csv --dataset_type regression --save_dir /Users/carlafeliu/Docs/Master/TFM/github/TFM/df_checkpoint",
-        "time": "Tue Jul 11 15:30:27 2023"
+        "command_line": "python /Users/carlafeliu/Docs/Master/TFM/github/TFM/scripts_chemprop/train.py --data_path /Users/carlafeliu/Docs/Master/TFM/github/TFM/code/data_chemprop/chemprop_train.csv --dataset_type regression --save_dir /Users/carlafeliu/Docs/Master/TFM/github/TFM/df_checkpoint",
+        "git_has_uncommitted_changes": true,
+        "git_root": "/Users/carlafeliu/Docs/Master/TFM/github/TFM",
+        "git_url": "https://github.com/carlafeliu/TFM/tree/3e2f7f833d7333102bec76b210b3d823e385c5f6",
+        "time": "Thu Jul 13 13:07:24 2023"
     },
     "resume_experiment": false,
     "save_dir": "/Users/carlafeliu/Docs/Master/TFM/github/TFM/df_checkpoint",
