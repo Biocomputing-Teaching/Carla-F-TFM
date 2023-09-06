@@ -1,0 +1,2 @@
+Task,Mean rmse,Standard deviation rmse,Fold 0 rmse,Mean mae,Standard deviation mae,Fold 0 mae,Mean mse,Standard deviation mse,Fold 0 mse,Mean r2,Standard deviation r2,Fold 0 r2
+pchembl_value,0.7292494891482921,0.0,0.7292494891482921,0.5492211078998466,0.0,0.5492211078998466,0.5318048174230451,0.0,0.5318048174230451,0.678175769509676,0.0,0.678175769509676

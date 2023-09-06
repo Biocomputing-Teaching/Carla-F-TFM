@@ -1,0 +1,119 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ramos and Malcata(2019)]{Ramos2019}
+Oscar~L. Ramos and F.~Xavier Malcata.
+\newblock \emph{Food-grade enzymes}.
+\newblock Elsevier, 1 2019.
+\newblock ISBN 9780444640475.
+\newblock \doi{10.1016/B978-0-12-809633-8.09173-1}.
+
+\bibitem[Gupta and Gupta(2020)]{Gupta2020}
+Satya~P. Gupta and Sayan~Dutta Gupta.
+\newblock \emph{Cancer-leading proteases: An introduction}.
+\newblock Elsevier, 1 2020.
+\newblock ISBN 9780128181683.
+\newblock \doi{10.1016/B978-0-12-818168-3.00001-2}.
+
+\bibitem[Berdowska(2004)]{Berdowska2004}
+Izabela Berdowska.
+\newblock Cysteine proteases as disease markers, 4 2004.
+\newblock ISSN 00098981.
+
+\bibitem[Mohamed and Sloane(2006)]{Mohamed2006}
+Mona~Mostafa Mohamed and Bonnie~F. Sloane.
+\newblock Cysteine cathepsins: Multifunctional enzymes in cancer.
+\newblock volume~6, pages 764--775, 10 2006.
+\newblock \doi{10.1038/nrc1949}.
+
+\bibitem[Gocheva et~al.(2006)Gocheva, Zeng, Ke, Klimstra, Reinheckel, Peters,
+  Hanahan, and Joyce]{Gocheva2006}
+Vasilena Gocheva, Wei Zeng, Danxia Ke, David Klimstra, Thomas Reinheckel,
+  Christoph Peters, Douglas Hanahan, and Johanna~A. Joyce.
+\newblock Distinct roles for cysteine cathepsin genes in multistage
+  tumorigenesis.
+\newblock \emph{Genes and Development}, 20:\penalty0 543--556, 3 2006.
+\newblock ISSN 08909369.
+\newblock \doi{10.1101/gad.1407406}.
+
+\bibitem[Joyce et~al.()Joyce, Baruch, Chehade, Meyer-Morse, Giraudo, Tsai,
+  Greenbaum, Hager, Bogyo, and Hanahan]{cath}
+Johanna~A Joyce, Amos Baruch, Kareem Chehade, Nicole Meyer-Morse, Enrico
+  Giraudo, Fong-Ying Tsai, Doron~C Greenbaum, Jeffrey~H Hager, Matthew Bogyo,
+  and Douglas Hanahan.
+\newblock Cathepsin cysteine proteases are effectors of invasive growth and
+  angiogenesis during multistage tumorigenesis.
+
+\bibitem[Maurais and Weerapana(2019)]{Maurais2019}
+Aaron~J. Maurais and Eranthie Weerapana.
+\newblock Reactive-cysteine profiling for drug discovery, 6 2019.
+\newblock ISSN 18790402.
+
+\bibitem[Aljoundi et~al.(2020)Aljoundi, Bjij, Rashedy, and
+  Soliman]{Aljoundi2020}
+Aimen Aljoundi, Imane Bjij, Ahmed~El Rashedy, and Mahmoud~E.S. Soliman.
+\newblock Covalent versus non-covalent enzyme inhibition: Which route should we
+  take? a justification of the good and bad from molecular modelling
+  perspective, 4 2020.
+\newblock ISSN 18758355.
+
+\bibitem[Hughes et~al.(2011)Hughes, Rees, Kalindjian, and Philpott]{Hughes2011}
+J.~P. Hughes, S.~S. Rees, S.~B. Kalindjian, and K.~L. Philpott.
+\newblock Principles of early drug discovery, 3 2011.
+\newblock ISSN 00071188.
+
+\bibitem[Hop et~al.(2018)Hop, Allgood, and Yu]{Hop2018}
+Patrick Hop, Brandon Allgood, and Jessen Yu.
+\newblock Geometric deep learning autonomously learns chemical features that
+  outperform those engineered by domain experts.
+\newblock \emph{Molecular Pharmaceutics}, 15:\penalty0 4371--4377, 10 2018.
+\newblock ISSN 15438392.
+\newblock \doi{10.1021/acs.molpharmaceut.7b01144}.
+
+\bibitem[Alzubaidi et~al.(2021)Alzubaidi, Zhang, Humaidi, Al-Dujaili, Duan,
+  Al-Shamma, Santamaría, Fadhel, Al-Amidie, and Farhan]{Alzubaidi2021}
+Laith Alzubaidi, Jinglan Zhang, Amjad~J. Humaidi, Ayad Al-Dujaili, Ye~Duan,
+  Omran Al-Shamma, J.~Santamaría, Mohammed~A. Fadhel, Muthana Al-Amidie, and
+  Laith Farhan.
+\newblock Review of deep learning: concepts, cnn architectures, challenges,
+  applications, future directions.
+\newblock \emph{Journal of Big Data}, 8, 12 2021.
+\newblock ISSN 21961115.
+\newblock \doi{10.1186/s40537-021-00444-8}.
+
+\bibitem[Talevi et~al.(2020)Talevi, Morales, Hather, Podichetty, Kim,
+  Bloomingdale, Kim, Burton, Brown, Winterstein, Schmidt, White, and
+  Conrado]{Talevi2020}
+Alan Talevi, Juan~Francisco Morales, Gregory Hather, Jagdeep~T. Podichetty,
+  Sarah Kim, Peter~C. Bloomingdale, Samuel Kim, Jackson Burton, Joshua~D.
+  Brown, Almut~G. Winterstein, Stephan Schmidt, Jensen~Kael White, and
+  Daniela~J. Conrado.
+\newblock Machine learning in drug discovery and development part 1: A primer.
+\newblock \emph{CPT: Pharmacometrics and Systems Pharmacology}, 9:\penalty0
+  129--142, 3 2020.
+\newblock ISSN 21638306.
+\newblock \doi{10.1002/psp4.12491}.
+
+\bibitem[Wang et~al.(2022)Wang, Yu, Wang, Guo, Sun, and Lai]{Wang2022}
+Liying Wang, Zhongtian Yu, Shiwei Wang, Zheng Guo, Qi~Sun, and Luhua Lai.
+\newblock Discovery of novel sars-cov-2 3cl protease covalent inhibitors using
+  deep learning-based screen.
+\newblock \emph{European Journal of Medicinal Chemistry}, 244, 12 2022.
+\newblock ISSN 17683254.
+\newblock \doi{10.1016/j.ejmech.2022.114803}.
+
+\bibitem[che({\natexlab{a}})]{chemblweb}
+About - chembl interface documentation, {\natexlab{a}}.
+\newblock URL
+  \url{https://chembl.gitbook.io/chembl-interface-documentation/about}.
+
+\bibitem[che({\natexlab{b}})]{chemdivweb}
+Focused and targeted libraries - chemdiv inc., {\natexlab{b}}.
+\newblock URL
+  \url{https://www.chemdiv.com/catalog/focused-and-targeted-libraries/}.
+
+\end{thebibliography}
