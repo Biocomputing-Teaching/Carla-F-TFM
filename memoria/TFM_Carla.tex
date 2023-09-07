@@ -263,7 +263,6 @@ The different dataframes prepared for training the model, originated from a data
 
 \begin{table}[ht]
 \centering
-\label{Table1}
 \begin{tabular}{l c c c} 
      \hline
      Train & Initial dim. & Data curated & Norm.\\ 
@@ -281,16 +280,56 @@ The different dataframes prepared for training the model, originated from a data
 \label{Table1}
 \end{table}
 
+In both Table~\ref{Figure1} and Figures~\ref{Figure2} and ~\ref{Figure3}, the evaluation metrics of the training models are presented, where we can see the different results: 
 
-\subsection{Subsection title}
+\begin{itemize}
+\item Mean Absolute Error (MAE): MAE is a measure of the average difference between the model's predictions and the actual values. The closer MAE is to 0, the better the model's performance, as it indicates that the predictions are closer to the actual values. As can be seen in the results of the mentioned figures, training model 4 shows the best performance in this aspect, while training model 1 performs the worst.
+\item Mean Squared Error (MSE): MSE takes the square of the differences between predictions and actual values and calculates an average. The lower the value, the better the model's performance. In the mentioned figures, it can be observed that training model 4 continues to have the best performance, while training model 1 performs the worst.
+\item Coefficient of Determination (R2): It is a measure that assesses how well the predictions fit the actual values. This value varies from 0 to 1, where 1 indicates a perfect fit to the model, and 0 indicates no fit at all. In this result, we see that the model that approaches 1 the closest and therefore fits better is training model 2, followed by training models 4 and 3, which have the same R2 value with very little difference from 2. Finally, training model 1 is the furthest from a perfect fit.
+\item Root Mean Squared Error (RMSE): RMSE is the square root of MSE and is used to provide an average of the model's error. The lower it is, the better the model's performance. In this result, training model 1 stands out by a significant margin as having the best performance.
+\end{itemize}
 
+The results obtained from the 4 training runs conducted with the ML model algorithm show that the model with the highest possibility of error is training model 1, prepared with less elaborate data curation and with non-normalized data, while the one with the most reliable prediction is training model 4, with stricter data curation and a MinMaxScaler normalization. With the training results analysis, it is decided to use Train 4 to obtain the predictions for our study. 
 
-%%\begin{figure}
- %%   \centering 
-%%	\includegraphics[width=0.4\textwidth, angle=-90]{ASCOM_journal_cover.pdf}	
-%%	\caption{Astronomy \& Computing journal cover} 
-%%	\label{fig_mom0}%
-%%\end{figure}
+\begin{figure}[ht]
+    \centering 
+     \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/results_train.jpeg}	
+     \caption{Training set results metrics} 
+     \label{Figure1}
+ \end{figure}
+ 
+ \begin{figure}[ht]
+     \centering 
+      \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/plot_results_train.png}	
+      \caption{Line chart of training set results metrics} 
+      \label{Figure2}
+  \end{figure}
+ 
+  \begin{figure}[ht]
+     \centering 
+      \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/bar_results_train.png}	
+      \caption{Barplot of training set results metrics} 
+      \label{Figure3}
+  \end{figure}
+
+Once the model predictions have been made, the results of the 200 molecules used for training, for which we already had information about inhibitory activity, were compared with the same 200 molecules resulting from the prediction. In the case of these ones, the algorithm generates a prediction of the activity because when inputting the dataset into the model for prediction, this information was not included. 
+
+Whan analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted that the distribution of the data is not perfect. Although the figure could suggest a pattern that indicate a good distribution, there are many intermediate values that generate multiple peaks that don't follow the same trend. This can also be observed with the regression line (Figure~\ref{Figure5}), which does not fit the central line of the actual values, indicating that it does not fully adapt to the real values. Furthermore, it can be observed how this dispersion in the distribution increases with higher values. 
+
+\begin{figure}[ht]
+    \centering 
+     \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/residual_error_predict_chemdiv.png}	
+     \caption{Histogram of predicted residual errors} 
+     \label{Figure4}
+ \end{figure}
+
+ \begin{figure}[ht]
+    \centering 
+     \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/linregresion_predict_chemdiv.png}	
+     \caption{Linear regression of predicted residual errors} 
+     \label{Figure5}
+ \end{figure}
+
 
 
 
