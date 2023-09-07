@@ -71,7 +71,7 @@
 %%            country={}}
 %% \fntext[label3]{}
 
-\title{Cerca d'inhibidors amb ML}
+\title{Discovering cysteine protease covalent inhibitors using deep learning message passing networks}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{}
@@ -90,12 +90,8 @@
 %%             country={}}
 
 \author[first]{Carla Feliu}
-\affiliation[first]{organization={University of Vic - Central University of Catalonia},%Department and Organization
-            addressline={}, 
-            city={Vic},
-            postcode={}, 
-            state={},
-            country={}}
+\affiliation[first]{organization={University of Vic - Central University of Catalonia},%Department and Organization 
+            city={Vic}}
 
 \begin{abstract}
 %% Text of abstract
@@ -152,7 +148,7 @@ Historically, this search was guided by the calculations and intuition of expert
 
 One of the most used methods currently for this drug development, and which has allowed a great advance in this field of medical research, making the process less expensive and more efficient, is machine learning (ML). ML is a branch of artificial intelligence (AI) that applies computer algorithms with the ability to learn themselves from dirty, raw data, to then perform a specific task. Within ML methods, the most widely used and expanding is deep learning (DL). It is inspired by the information processing patterns of the human brain and is designed using multiple layers of algorithms (artificial neural networks, ANNs), each of which makes an interpretation of the data it has received. \cite{Alzubaidi2021} 
 
-Artificial neural networks, inspired by the human brain, are created to simulate a network of model neurons on a computer. By applying algorithms that mimic the processes of real neurons, models are generated that learn to solve many types of problems. The networks are composed of artificial neuron units, capable of transmitting signals to each other.(what are artificial networks ). Each reception of a signal in the neurons is associated with a weight that varies as learning progresses, which can increase or decrease the strength of the signal that will then be sent to the other neurons. These signals pass the multilayers of artificial neurons until they reach the final layer, where the result of these connections is the prediction of the algorithm. \cite{Talevi2020}
+Artificial neural networks, are created to simulate a network of model neurons on a computer. By applying algorithms that mimic the processes of real neurons, models are generated that learn to solve many types of problems. The networks are composed of artificial neuron units, capable of transmitting signals to each other.(what are artificial networks ). Each reception of a signal in the neurons is associated with a weight that varies as learning progresses, which can increase or decrease the strength of the signal that will then be sent to the other neurons. These signals pass the multilayers of artificial neurons until they reach the final layer, where the result of these connections is the prediction of the algorithm. \cite{Talevi2020}
 
 The chemprop Architecture is a neural network built for the prediction of molecular properties that includes a directed message passing neural network (D-MPNN) module for molecular feature extraction and a feed-forward neural network (FNN) for property prediction. This model takes molecular SMILES as input and extracts all the atomic and bonding characteristics of the molecules to generate a single vector of characteristics which, by entering it into the FNN, can predict the activity of the candidate molecules. \cite{Wang2022}
 
@@ -180,23 +176,35 @@ Specific objectives:
     \item Detect patterns of molecules that could be optimal for working in the discovery of cystein protease inhibitors. 
 \end{enumerate}
 
-\section{Methods}
+\section{\textbf{Methods}}
+
+\subsection{Machine learning model}
+
+To carry out the study and work with the Machine Learning algorithm, we have used the the Visual Studio Code editor to generate all the necessary code in the python programming lenguage. 
+
+Machine Learning is an expansive field where various algorithms and models can be used to achieve multiple objectives. In this study, we developed code that uses a deep learning model incorporating a directed message passing neural network (D-MPNN) to obtain predictions. 
+
+We employed the Chemprop architecture, an open-source machine learning framework. This framework includes a D-MPNN module for molecular feature extraction and a feed-forward neural network (FNN) for property prediction. To work with this algorithm, input in SMILES format (representing chemical formulas) is required. The algorithm then transforms this input into a molecular graph structure, where atoms serve as nodes, and bonds as edges. 
+
+The D-MPNN module plays a crucial role in extracting specific features for all the atoms, creating a dataset that represents the entire molecule. Information flows unidirectionally from the input layer to the final output layer. Then, the resulting vector is employed in the FNN module for making predictions regarding the activity of the molecules studied. \cite{Wang2022}
+
+A deep learning artificial neural network can solve classification or regression problems. Classification problems involve the use of labels, where data must be categorized into multiple categories. On the other hand, regression problems require the specification of a numerical quantity to classify variables. In this work, we have focused on regression problems, using the IC50 value variable extracted from the ChEMBL database, which classifies molecules on their interaction activity. 
 
 \subsection{Datasets}
 
-Per realitzar aquest estudi, hem treballat en tres bases de dades diferents per extreure la informació necessària per realitzar el nostre estudi. L’extracció de les dades s’ha fet depenent de cada base de dades i es detallara mes endavant.  
+In this study, we worked with three different databases to extract the necessary information for our research. Data extraction has been performed depending on each database.  
 
 \subsubsection{ChEMBL}
-Chembl es una base de dades de petites molècules bioactives similars a fàrmacs, que contenen propietats calculades i bioactivitats. Les dades són extretes de literatura científica i participen en el descobriment de fàrmacs. \cite{chemblweb}
 
-El nostre interès en aquesta base de dades es tracta d’obtenir informació de molècules que puguin interaccionar amb cystein proteases per tal d’obtenir un punt de referència sobre l'activitat d'interacció que ens permeti entrenar el nostre model de ML. 
-Per accedir a la informació que ens interessa per el nostre estudi, hem filtrat dins la base de dades de ChEMBL amb el terme “cystein proteasa” i hem extret els 129 target ID   resultants. Un cop obtinguts els targets de cystein proteasa, amb el mòdul requests de python hem obtingut informació de totes les molècules que tenen interacció amb cada un dels lligands, junt amb la seva activitat d’interacció, el valor IC50, que hem utilitzat per poder entrenar el model ML. 
+ChEMBL is a database of bioactive small molecules similar to drugs, containing calculated properties and bioactivities. \cite{chemblweb}
+
+Our interest in this database is to obtain information about molecules that can interact with cysteine proteases in order to establish a reference point for interaction activity, allowing us to train our ML model. To access the relevant information to our study, we filtered the ChEMBL database with the term "cysteine protease" and extract the resulting targets. Once we obtained the cysteine protease targets, we used the python "requests" module to retrieve information about all the molecules interacting with each of the targets, along with their interaction activity, represented by the -log(IC50 molar) value. The value was used to train our ML model. 
 
 \subsubsection{ChemDiv}
 
-ChemDiv és una organització d’investigació reconeguda mundialment en solucions de descobriment de fàrmacs. Tenen identificades diverses llibreries específiques dirigides a abordar diverses dianes, dominis proteics, processos cel·lulars... \cite{chemdivweb}
+ChemDiv is a globally recognized research organization in drug discovery solutions. They have identified specific libraries aimed at addressing varius targets, protein domains, cellular processes and more. \cite{chemdivweb}
 
-D’aquesta base de dades hem obtingut la llibreria “Cysteine Targeted Covalent Library”, amb 39,301 compostos que tenen warheads específics per reaccionar amb cisteïna. L’objectiu d’utilitzar aquesta llibreria és, aplicant el nostre model entrenat, trobar possibles compostos que tinguin una activitat d’interacció significativa amb la cisteïna per trobar un patró que ens pugui servir per entendre quin tipu de molecula seria un bon inhibidor. 
+From this database, we obtained the "Cysteine Targeted Covalent Library", which consists of 39,301 compounts with specific warheads designed to react with cysteine. The objective of using this library is, by applying our trained model, to find possible compounds that exhibit significant interaction activity with cysteine. This will help us identify patterns that can be used to understand what type of molecule could be a good inhibitor. 
 
 \subsubsection{Zinc}
 
@@ -204,12 +212,49 @@ ZINC
 
 \subsection{Data preparation and curation}
 
-Per dur a terme el procés d’entrenament de models de Machine learning de manera efectiva, és molt important tenir un conjunt de dades adequat i degudament preparat. Per tant, es requereix d’una preparació prèvia. 
-Aquesta estructura de dades ha de tenir una primera columna que contingui els SMILES de les molècules, features que descriguin les molècules, i finalment, en una ultima fila l’activitat d’interacció d’aquestes molècules, el valor IC50. La preparació de dades inclou també la realització d’un anàlisis exhaustiu de l’estructura de les dades, la qual cosa resulta fonamental per entendre a fons les dades, i així dur a terme un anàlisis de resultats més precís.
+To carry out the process of training machine learning models effectively, it is crucial to have suitable and properly prepared dataset. Therefore, prior preparation is required. 
+
+This data structure should have a first column containing the SMILES of the molecules, features describing the molecules, and finally, in a last row, the interaction activity of these molecules, the IC50 value. Data preparation also includes conducting a thorough analysis of the data structure, which is essential for a deep understanding of the data and, consequently, for conducting a more accurate result analysis. 
 
 \subsubsection{Train}
 
+To prepare the training data, we started with a list of all the targets that interact with cysteine proteases and their interactions, from the ChEMBL database. These initial data will provide us a lot of information, but there is an important data preprocessing step before introducing the dataframe into our model. 
 
+From this dataframe containing the intereactions of the cystein proteasa targets, we extracted the list of all the ChEMBL IDs of the molecules that interact with them, along with their IC50 activity values. Using a ChEMBL API and Python function, we obtained the SMILES for each of the registered molecules. 
+
+The data cleaning process is very important, which includes the removal of null values, as they represent a lack of information that may not be accepted or could influence the outcome of the algorithm, and the elimination of duplicated SMILES to avoid duplicated information. 
+
+To prepare the training data, we used the chemoinformatics and machine learning software RDKit\cite{rdkit}. From this software, we employed a Python function to iterate over each SMILE, resulting in a total of 10 different features extracted from each compound. 
+In order to ensure and assess the quality of the trained model, we conducted four trainings using four slightly different feature dataframes. These dataframes were analyzed, and ultimately, we determined which one is the most suitable for analyzind our data. 
+
+\begin{itemize}
+\item Train 1: No curated and no normalized data.
+\item Train 2: Curated and no normalized data.
+\item Train 3: Curated and z-score normalized data.
+\item Train 4: Curated and MinMaxScaler normalized data.
+\end{itemize}
+\subsubsection{Predict}
+
+The first prediction was carried out using data from ChemDiv. To extract this data, we specifically selected the ChemDiv Cysteine Targeted Covalent Library to obtain the initial results. 
+
+We downloaded the database using a Python function that uses the "requests" package to access the URL of the corresponding ChemDiv library. This returned an SDF file with all the information for each molecule. Using a function that accesses the previously mentioned RDKit module, we created a dataframe composed of the first column with SMILES, followed by 10 different features for each molecule. In this case, we didnt' include the IC50 activity, as this will be obtained from the ML model. 
+To prepare the data for inpot into the algorithm, we performed a curation similar to the one mentioned in the training data preparation. Additionally, we added 200 molecules extracted from the dataframe used to train the model, as these molecules have been entered into the system with real and validated values, providing a reference. Finally, to ensure that the data have the same distribution to the trained model that will be used, we performed a MinMaxScaler normalization. 
+
+The second prediction was carried out with data from the general Zinc database, obtaining only a portion to work with a more manegeable data quantity. It was used to address the goal of finding patterns within a general database, without especificity to cysteine proteases. 
+
+From Zinc, we downloaded a .uri file that contains the total database distributed across diferents URLs. Using Python's wget control, we accessed all of these URLs and downloaded the data, resulting in multiple files that collectively comprise the Zinc database. Subsequently, using a python function, we downloaded three of these files, each containing a multitude of molecules. The resulting dataframe from this download consists fo SMILES along with corresponding ZINC IDs. 
+
+Through a function that uses RDKit, we filtered out invalid SMILES to minimize potential errors before preparing the dataframe for the algorithm. Similarly to what we mentioned earlier for the other dataframes, we used a function with RDKit to generate the appropriate matrix for inputting into the algorithm, with the first column containing the SMILES, followed by 10 features for each one. 
+
+Finally, as we did with the first dataframe prediction, we added the same 200 molecules extracted from the training dataframe and normalized data with MinMaxScaler. 
+
+\subsection{Results data analysis}
+
+Once the result of the prediction from the used model was obtained, an analysis was conducted to assess the residual error of the resulting prediction. The 200 reference molecules, which were used both for training and obtaining the predictions, were used to generate a histogram and a regression line. This analysis allows us to visualize the model's error and the reliability of our data. 
+
+To analyze and draw conclusions from the results, correlation graphs of the variables were generated for the two predictions made, in order to observe the relationship between all the calculated features. Additionally, a correlation graph of all the features with the IC50 activity value calculated by the model was created. 
+
+Finally, based on the results of the two predictions from the different databases, a selection of the molecules with a higher -log(IC50 molar) value was made, generating a dataframe for each prediction of the 10 molecules showed stronger interactions. To conclude, a similarity analysis was conducted. This will enable us to observe and analyze if there is a pattern among the molecules with higher activity, providing an indication of whether our model aligns with the objective or not. 
 
 \section{Results}
 %%\label{Results}
