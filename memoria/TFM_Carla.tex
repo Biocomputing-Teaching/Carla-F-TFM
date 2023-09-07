@@ -259,10 +259,11 @@ Finally, based on the results of the two predictions from the different database
 \section{Results}
 %%\label{Results}
 
-RESULTATS DE LA CARLA 
+The different dataframes prepared for training the model, originated from a dataset with 19,262 molecules. In the case of train 1, a less elaborate data curation was performed, resulting in a dataframe with 19,172 molecules. For the train 2, starting from the same database, a more elaborated data curation was carried out, eliminating duplicated SMILES, reducing the number of molecules to 11,703. Train 3 and Train 4 were prepared by the dataset from Train 2 and normalizing the data using z-score and MinMaxScaler, respectively. (Table~\ref{Table1})
 
-\begin{table}
+\begin{table}[ht]
 \centering
+\label{Table1}
 \begin{tabular}{l c c c} 
      \hline
      Train & Initial dim. & Data curated & Norm.\\ 
@@ -276,8 +277,7 @@ RESULTATS DE LA CARLA
      Train 4 & 19,262 & 11,703 & MinMaxScale\\ 
      \hline
     \end{tabular}
-\caption{Train results
-}
+\caption{Training sets}
 \label{Table1}
 \end{table}
 
