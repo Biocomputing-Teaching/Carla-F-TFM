@@ -28,6 +28,7 @@
 \usepackage{lipsum}
 \usepackage{subcaption}
 \usepackage{placeins}
+\usepackage{fancyhdr}
 
 
 
@@ -47,6 +48,14 @@
 
 
 \begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RO]{\small Discovering cysteine protease covalent inhibitors using deep learning}
+\fancyhead[LO]{\small Omics Data Analysis 2023}
+%%\fancyfoot{}
+%%\fancyfoot[LO]{\small September 2023}
+
 
 \begin{frontmatter}
 
@@ -94,9 +103,10 @@
 %%             country={}}
 
 \author[first]{Carla Feliu}
+\date{September 2023}
 \affiliation[first]{organization={University of Vic - Central University of Catalonia},%Department and Organization 
             city={Vic}}
-
+\affiliation[second]{organization = Omics Data Analysis}
 \begin{abstract}
 %% Text of abstract
 Example abstract for the astronomy and computing journal. Here you provide a brief summary of the research and the results. RESUM DE TOT
@@ -115,7 +125,7 @@ Example abstract for the astronomy and computing journal. Here you provide a bri
 
 \begin{keyword}
 %% keywords here, in the form: keyword \sep keyword, up to a maximum of 6 keywords
-keyword 1 \sep keyword 2 \sep keyword 3 \sep keyword 4
+Cysteine proteasa \sep Deep learning \sep Directed message passing neural network 
 
 %% PACS codes here, in the form: \PACS code \sep code
 
@@ -368,7 +378,7 @@ When analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted 
 
  The results for the dataset of the first prediction, show that the most correlated variables among them, as see in Figure~\ref{Figure8}, are MW with Heavy Atom Counts, H-bond Donor with Rotatable Bonds and H-bond Acceptor with TPSA, with correlation values of 0,97 , 0,85 and 0,85 respectively. Regarding the relationship of each variable with the activity value (Figure~\ref{Figure9}), the ones with the highest correlation are H-bond acceptor and Rotatable Bonds with correlation values of 0,34 and 0,3. 
 
- For the dataset of the second train, the variables most related to each other, as seen in Figure~\ref{Figure10}, are MW with Heavy Atom Counts and TPSA with Heavy Atom Counts, with correlation values of 0,98 and 0,9 respectively. The variables that are most related to the activity value (Figure~\ref{Figure11}) are H-bond acceptor and TPSA with values 0,41 and 0,34. 
+ For the dataset of the second train, the variables most related to each other, as seen in Figure~\ref{Figure11}, are MW with Heavy Atom Counts and TPSA with Heavy Atom Counts, with correlation values of 0,98 and 0,9 respectively. The variables that are most related to the activity value (Figure~\ref{Figure10}) are H-bond acceptor and TPSA with values 0,41 and 0,34. 
 
 \begin{figure}[h]
     \begin{subfigure}{0.5\textwidth}
@@ -393,7 +403,14 @@ When analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted 
      \label{Figure9}
  \end{figure}
 
- \begin{figure}[ht]
+ \begin{figure}[h]
+    \centering 
+     \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/cor_plot3_pchembl_predict_zinc.png}	
+     \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to the second predict model} 
+     \label{Figure10}
+ \end{figure}
+
+ \begin{figure}[h]
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/pairplot_matrix_predict_zinc.png} 
         \caption{Pairplot correlation matrix}
@@ -406,15 +423,8 @@ When analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted 
     \end{subfigure}
     
     \caption{Correlation analysis from the dataset used to the second predict model}
-    \label{Figure10}
+    \label{Figure11}
 \end{figure}
-
-\begin{figure}[h]
-    \centering 
-     \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/cor_plot3_pchembl_predict_zinc.png}	
-     \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to the second predict model} 
-     \label{Figure11}
- \end{figure}
 
  %%SIMILARITY
  \begin{figure}[h]
@@ -424,19 +434,19 @@ When analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted 
      \label{Figure12}
  \end{figure}
 
- \begin{figure}[h]
+ \begin{figure*}[h]
     \centering 
      \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/top10_mol_chemdiv.png}	
      \caption{The 10 molecules from the first predicted results with a higher activity value} 
-     \label{Figure13}
- \end{figure}
+     \label{Figure13*}
+ \end{figure*}
 
- \begin{figure}[h]
+ \begin{figure*}[h]
     \centering 
      \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/top10_mol_zinc.png}	
      \caption{The 10 molecules from the second predicted results with a higher activity value} 
      \label{Figure14}
- \end{figure}
+ \end{figure*}
 
  \begin{figure}[h]
     \begin{subfigure}{0.5\textwidth}
@@ -445,7 +455,7 @@ When analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted 
         %%\label{fig:subim1}
     \end{subfigure}
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.8\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_zinc.png}
+        \includegraphics[width=0.7\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_zinc.png}
         \caption{}
         %%\label{fig:subim2}
     \end{subfigure}
@@ -468,7 +478,7 @@ The farthest result from a well-fitted model was observed in training 1, which c
 
 Upon analyzing the prediction model versus the trained model, we observe that for the data of greatest interest to us, those with higher IC50 values, the regression line shows an increase in dispersion (see figure). This indicates that our model is not entirely reliable, especially for results where IC50 is crucial for inhibitor discovery.
 
-Regarding the features analyzed in the prediction results based on the correlation of variables, in all three cases analyzed (see Figures~\ref{Figure6},~\ref{Figure8},~\ref{Figure10}), we can see a strong correlation between the MW and Heavy Atom Count features. This may be due to the fact that heavier molecules tend to have more heavy atoms.
+Regarding the features analyzed in the prediction results based on the correlation of variables, in all three cases analyzed (see Figures~\ref{Figure6},~\ref{Figure8},~\ref{Figure11}), we can see a strong correlation between the MW and Heavy Atom Count features. This may be due to the fact that heavier molecules tend to have more heavy atoms.
 
 As for the relationship between variables and the IC50 value, the analysis suggests that in none of the three datasets is there a strong correlation with this variable, particularly in the training dataset. This indicates that a strong interaction activity is not significantly correlated with these chemical characteristics. Nonetheless, in Figure~\ref{Figure15} of the predictions, we can observe how it supports the results of the correlation heatmap, where it is evident that the variables H-bond acceptor, TPSA, Heavy Atom Counts, and Rotatable Bonds are the ones with the highest values.
 
