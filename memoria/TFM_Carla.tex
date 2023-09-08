@@ -27,6 +27,8 @@
 \usepackage{amssymb}
 \usepackage{lipsum}
 \usepackage{subcaption}
+\usepackage{placeins}
+
 
 
 %% The amsthm package provides extended theorem environments
@@ -336,25 +338,28 @@ When analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted 
 
  To analyze the results obtained from the prediction, correlation graphs between variables have been generated, as well as correlation graphs for each of the calculated variables with the inhibitory activity value. In order to compare these results and draw a conclusion based on real data, the same analysis has also been performed on the data used to train the model used for the predictions. These graphs will provide us information about patterns of data correlation, considering that a value of 1 will indicate a perfect positive correlation between variables, and a value -1 a perfect negative correlation, meaning that when one variable increases, the other decreases. 
 
+
+
  First of all, to analyze the dataset used to train the model, we can observe in Figure~\ref{Figure6} that the variables most correlated with each other are Molecular Weight (MW) with Heavy Atom Counts and Hydrogen Bond Donor (H-bond donor) with Topological Polar Surface Area (TPSA) with correlation values of 0,99 and 0,82 respectively. Looking at Figure~\ref{Figure7}, we see that the maximum correlation value is 0,13. This indicates that, in general, the correlation of the variables with what interests us is not very high. The variables most correlated with the value of inhibitory activity within the given values, are Rotatable Bonds, with a value of 0,13, and Balaban J Index, with a value of 0,11. 
 
-\begin{figure}[ht]
+\begin{figure}[h]
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/pairplot_matrix_train4.png} 
-        \caption{Pairplot correlation matrix}
+        \includegraphics[width=0.8\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/pairplot_matrix_train4.png} 
+        \caption{}%%Pairplot correlation matrix
         %%\label{fig:subim1}
     \end{subfigure}
+    \hfill
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/migheatmap_train4.png}
-        \caption{Correlation matrix}
+        \includegraphics[width=0.8\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/migheatmap_train4.png}
+        \caption{} %%Correlation matrix
         %%\label{fig:subim2}
     \end{subfigure}
     
-    \caption{Correlation analysis from the dataset used to train the model}
+    \caption{Correlation analysis from the dataset used to train the model (ChEMBL). (a) Pariplot correlation matrix. (b)Correlation matrix heatmap}
     \label{Figure6}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[h]
     \centering 
      \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/cor_plot3_pchembl_train4.png}	
      \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to train the model} 
@@ -365,23 +370,23 @@ When analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted 
 
  For the dataset of the second train, the variables most related to each other, as seen in Figure~\ref{Figure10}, are MW with Heavy Atom Counts and TPSA with Heavy Atom Counts, with correlation values of 0,98 and 0,9 respectively. The variables that are most related to the activity value (Figure~\ref{Figure11}) are H-bond acceptor and TPSA with values 0,41 and 0,34. 
 
-\begin{figure}[ht]
+\begin{figure}[h]
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/pairplot_matrix_predict_chemdiv.png} 
+        \includegraphics[width=0.8\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/pairplot_matrix_predict_chemdiv.png} 
         \caption{Pairplot correlation matrix}
         %%\label{fig:subim1}
     \end{subfigure}
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/migheatmap_predict_chemdiv.png}
+        \includegraphics[width=0.8\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/migheatmap_predict_chemdiv.png}
         \caption{Correlation matrix}
         %%\label{Figure8}
     \end{subfigure}
     
-    \caption{Correlation analysis from the dataset used to the first predict model}
+    \caption{Correlation analysis from the dataset used to the first predict model (ChemDiv). (a)Pariplot correlation matrix (b)Correlation matrix heatmap}
     \label{Figure8}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[h]
     \centering 
      \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/cor_plot3_pchembl_predict_chemdiv.png}	
      \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to the first predict model} 
@@ -404,7 +409,7 @@ When analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted 
     \label{Figure10}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[h]
     \centering 
      \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/cor_plot3_pchembl_predict_zinc.png}	
      \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to the second predict model} 
@@ -412,40 +417,40 @@ When analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted 
  \end{figure}
 
  %%SIMILARITY
- \begin{figure}[ht]
+ \begin{figure}[h]
     \centering 
      \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/best_similarity_resultspred.png}	
      \caption{Results from the similarity analysis from the two predicted results.} 
      \label{Figure12}
  \end{figure}
 
- \begin{figure}[ht]
+ \begin{figure}[h]
     \centering 
      \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/top10_mol_chemdiv.png}	
      \caption{The 10 molecules from the first predicted results with a higher activity value} 
      \label{Figure13}
  \end{figure}
 
- \begin{figure}[ht]
+ \begin{figure}[h]
     \centering 
      \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/top10_mol_zinc.png}	
      \caption{The 10 molecules from the second predicted results with a higher activity value} 
      \label{Figure14}
  \end{figure}
 
- \begin{figure}[ht]
+ \begin{figure}[h]
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_chemdiv.png} 
-        \caption{A. First predict. ChemDiv}
+        \includegraphics[width=0.8\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_chemdiv.png} 
+        \caption{}
         %%\label{fig:subim1}
     \end{subfigure}
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_zinc.png}
-        \caption{B. Second predict. Zinc}
+        \includegraphics[width=0.8\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_zinc.png}
+        \caption{}
         %%\label{fig:subim2}
     \end{subfigure}
     
-    \caption{Barplot matrix analysis from predicted results among IC50. }
+    \caption{Barplot matrix analysis from predicted results among IC50. (a)Fist predict, Chemdiv (b)Second predict, Zinc }
     \label{Figure15}
 \end{figure}
 
@@ -471,6 +476,7 @@ Finally, regarding the similarity analysis, we have been unable to obtain conclu
 
 We have also noticed some similarity among all molecules in the Chemdiv database, as they interact with very little difference in similarity compared to molecules in the zinc database. This is attributed to the fact that all these molecules originate from a cisteine protease warheads database, hence sharing similar features.
 
+\FloatBarrier
 \section{Conclusions}
 
 After conducting an analysis and training algorithms of ANN that allowed us to identify patterns and improve the stability of the prediction model. However, even though we have made progress in this regard, the results have not yet reached the necessary optimization to ensure full data reliability. This suggests the importance of conducting deeper and more comprehensive training to achieve a more precise adaptation of the model and enhance its predictive capacity.
@@ -478,6 +484,7 @@ After conducting an analysis and training algorithms of ANN that allowed us to i
 Regarding the search for patterns through the correlation between molecular features, our results indicate that we have not found a strong enough correlation between the analyzed variables and inhibitory activity. This finding leads us to consider the need to expand our research, exploring a broader set of molecular features to delve deeper into the relationship between these features and inhibitory activity, which could shed light on new markers and predictors.
 
 Finally, despite the overall unfruitful search for similarities, we highlight the interesting discovery of two highly similar molecules in the zinc database, both with elevated IC50 values. This discovery could serve as a starting point for further investigations exploring the relationship between these molecules and their ability to inhibit cysteine proteases, thus opening new avenues of study in this field.
+
 
 \appendix
 
