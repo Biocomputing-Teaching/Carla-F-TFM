@@ -129,7 +129,7 @@ This research highlights the potential of machine learning, particularly ANNs, a
 
 \begin{keyword}
 %% keywords here, in the form: keyword \sep keyword, up to a maximum of 6 keywords
-Cysteine proteasa \sep Deep learning \sep Directed message passing neural network 
+Cysteine proteasa \sep Deep learning \sep Artificial Neural Networks \sep Covalent inhibitors
 
 %% PACS codes here, in the form: \PACS code \sep code
 
@@ -452,21 +452,22 @@ When analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted 
      \label{Figure14}
  \end{figure*}
 
- \begin{figure}[h]
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.8\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_chemdiv.png} 
+ \begin{figure*}[h]
+    \centering
+    \begin{subfigure}{0.9\textwidth}
+        \includegraphics[width=0.9\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_chemdiv.png} 
         \caption{}
         %%\label{fig:subim1}
     \end{subfigure}
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.7\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_zinc.png}
+    \begin{subfigure}{0.9\textwidth}
+        \includegraphics[width=0.9\linewidth, height=4cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_zinc.png}
         \caption{}
         %%\label{fig:subim2}
     \end{subfigure}
     
     \caption{Barplot matrix analysis from predicted results among IC50. (a)Fist predict, Chemdiv (b)Second predict, Zinc }
     \label{Figure15}
-\end{figure}
+\end{figure*}
 
 
  We conclude the analysis with a similarity test of the top 10 molecules selected from each of the datasets resulting from the predictions (Table~\ref{Figure12}). Using the Tanimoto coefficient, a score of 1 exactly similarity, while 0 indicates no similarity. It is important to note that in all cases, very low similarity values are observed, with a maximum value of 0.2.
