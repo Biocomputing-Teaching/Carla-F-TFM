@@ -26,6 +26,8 @@
 %% The amssymb package provides various useful mathematical symbols
 \usepackage{amssymb}
 \usepackage{lipsum}
+\usepackage{subcaption}
+
 
 %% The amsthm package provides extended theorem environments
 %% \usepackage{amsthm}
@@ -36,10 +38,10 @@
 %% \usepackage{lineno}
 
 %% You might want to define your own abbreviated commands for common used terms, e.g.:
-\newcommand{\kms}{km\,s$^{-1}$}
-\newcommand{\msun}{$M_\odot}
+%%\newcommand{\kms}{km\,s$^{-1}$}
+%%\newcommand{\msun}{$M_\odot}
 
-\journal{Astronomy $\&$ Computing}
+%%\journal{Astronomy $\&$ Computing}
 
 
 \begin{document}
@@ -71,7 +73,7 @@
 %%            country={}}
 %% \fntext[label3]{}
 
-\title{Discovering cysteine protease covalent inhibitors using deep learning message passing networks}
+\title{Discovering cysteine protease covalent inhibitors using deep learning}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{}
@@ -130,7 +132,6 @@ keyword 1 \sep keyword 2 \sep keyword 3 \sep keyword 4
 %% main text
 
 \section{Introduction}
-\label{introduction}
 
 Proteases, also known as peptid hydrolases, are enzymes capable of catalysing hydrolytic reactions that degrade protein molecules to peptides, and finally to free amino acids. They also carry out proteolytic reactions, and regulate various enzymatic cascades that form part of metabolic cycles. \cite{Ramos2019} The role they play is key in carrying out vital biological processes, such as the regulation of various cellular processes as well as differentiation, gene expression and cell death. Protests are a very broad group of enzymes that are differentiated by, among other things, the type of amino acid residue in their catalytic site. \cite{Ramos2019}
 
@@ -176,7 +177,7 @@ Specific objectives:
     \item Detect patterns of molecules that could be optimal for working in the discovery of cystein protease inhibitors. 
 \end{enumerate}
 
-\section{\textbf{Methods}}
+\section{Methods}
 
 \subsection{Machine learning model}
 
@@ -208,7 +209,10 @@ From this database, we obtained the "Cysteine Targeted Covalent Library", which 
 
 \subsubsection{Zinc}
 
-ZINC
+ZINC is a database that houses an extensive collection of commercially available chemical compounds used in virtual screening and drug design research. \cite{Zinc}
+
+Given that this database contains a vast amount of information, with over 230 million compounds, we have randomly selected a portion of this data to conduct our analysis. This has allowed us to work with a more manageable amount of data and focus our objective on applying the algorithm to a comprehensive database.
+
 
 \subsection{Data preparation and curation}
 
@@ -254,7 +258,7 @@ Once the result of the prediction from the used model was obtained, an analysis 
 
 To analyze and draw conclusions from the results, correlation graphs of the variables were generated for the two predictions made, in order to observe the relationship between all the calculated features. Additionally, a correlation graph of all the features with the IC50 activity value calculated by the model was created. 
 
-Finally, based on the results of the two predictions from the different databases, a selection of the molecules with a higher -log(IC50 molar) value was made, generating a dataframe for each prediction of the 10 molecules showed stronger interactions. To conclude, a similarity analysis was conducted. This will enable us to observe and analyze if there is a pattern among the molecules with higher activity, providing an indication of whether our model aligns with the objective or not. 
+Finally, based on the results of the two predictions from the different databases, a selection of the molecules with a higher -log(IC50 molar) value was made, generating a dataframe for each prediction of the 10 molecules showed stronger interactions. To conclude, a similarity analysis was conducted. To perform the similarity analysis, the Tanimoto coefficient, or Jaccard-Tanimoto index, was used, which compares the similarity between two sets of samples. The results it provides are measured on a scale from 0 to 1, with a result closer to 1 indicating a higher degree of similarity among the molecules \cite{Bajusz2015}. This will enable us to observe and analyze if there is a pattern among the molecules with higher activity, providing an indication of whether our model aligns with the objective or not. 
 
 \section{Results}
 %%\label{Results}
@@ -265,7 +269,7 @@ The different dataframes prepared for training the model, originated from a data
 \centering
 \begin{tabular}{l c c c} 
      \hline
-     Train & Initial dim. & Data curated & Norm.\\ 
+     Train & Initial & Curated & Norm.\\ 
      \hline
      Train 1 & 19,262 & 19,172 & No\\
      \hline
@@ -314,7 +318,7 @@ The results obtained from the 4 training runs conducted with the ML model algori
 
 Once the model predictions have been made, the results of the 200 molecules used for training, for which we already had information about inhibitory activity, were compared with the same 200 molecules resulting from the prediction. In the case of these ones, the algorithm generates a prediction of the activity because when inputting the dataset into the model for prediction, this information was not included. 
 
-Whan analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted that the distribution of the data is not perfect. Although the figure could suggest a pattern that indicate a good distribution, there are many intermediate values that generate multiple peaks that don't follow the same trend. This can also be observed with the regression line (Figure~\ref{Figure5}), which does not fit the central line of the actual values, indicating that it does not fully adapt to the real values. Furthermore, it can be observed how this dispersion in the distribution increases with higher values. 
+When analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted that the distribution of the data is not perfect. Although the figure could suggest a pattern that indicate a good distribution, there are many intermediate values that generate multiple peaks that don't follow the same trend. This can also be observed with the regression line (Figure~\ref{Figure5}), which does not fit the central line of the actual values, indicating that it does not fully adapt to the real values. Furthermore, it can be observed how this dispersion in the distribution increases with higher values. 
 
 \begin{figure}[ht]
     \centering 
@@ -330,41 +334,163 @@ Whan analyzinc the results of the histogram (Figure~\ref{Figure4}), it is noted 
      \label{Figure5}
  \end{figure}
 
+ To analyze the results obtained from the prediction, correlation graphs between variables have been generated, as well as correlation graphs for each of the calculated variables with the inhibitory activity value. In order to compare these results and draw a conclusion based on real data, the same analysis has also been performed on the data used to train the model used for the predictions. These graphs will provide us information about patterns of data correlation, considering that a value of 1 will indicate a perfect positive correlation between variables, and a value -1 a perfect negative correlation, meaning that when one variable increases, the other decreases. 
+
+ First of all, to analyze the dataset used to train the model, we can observe in Figure~\ref{Figure6} that the variables most correlated with each other are Molecular Weight (MW) with Heavy Atom Counts and Hydrogen Bond Donor (H-bond donor) with Topological Polar Surface Area (TPSA) with correlation values of 0,99 and 0,82 respectively. Looking at Figure~\ref{Figure7}, we see that the maximum correlation value is 0,13. This indicates that, in general, the correlation of the variables with what interests us is not very high. The variables most correlated with the value of inhibitory activity within the given values, are Rotatable Bonds, with a value of 0,13, and Balaban J Index, with a value of 0,11. 
+
+\begin{figure}[ht]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/pairplot_matrix_train4.png} 
+        \caption{Pairplot correlation matrix}
+        %%\label{fig:subim1}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/migheatmap_train4.png}
+        \caption{Correlation matrix}
+        %%\label{fig:subim2}
+    \end{subfigure}
+    
+    \caption{Correlation analysis from the dataset used to train the model}
+    \label{Figure6}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering 
+     \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/cor_plot3_pchembl_train4.png}	
+     \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to train the model} 
+     \label{Figure7}
+ \end{figure}
+
+ The results for the dataset of the first prediction, show that the most correlated variables among them, as see in Figure~\ref{Figure8}, are MW with Heavy Atom Counts, H-bond Donor with Rotatable Bonds and H-bond Acceptor with TPSA, with correlation values of 0,97 , 0,85 and 0,85 respectively. Regarding the relationship of each variable with the activity value (Figure~\ref{Figure9}), the ones with the highest correlation are H-bond acceptor and Rotatable Bonds with correlation values of 0,34 and 0,3. 
+
+ For the dataset of the second train, the variables most related to each other, as seen in Figure~\ref{Figure10}, are MW with Heavy Atom Counts and TPSA with Heavy Atom Counts, with correlation values of 0,98 and 0,9 respectively. The variables that are most related to the activity value (Figure~\ref{Figure11}) are H-bond acceptor and TPSA with values 0,41 and 0,34. 
+
+\begin{figure}[ht]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/pairplot_matrix_predict_chemdiv.png} 
+        \caption{Pairplot correlation matrix}
+        %%\label{fig:subim1}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/migheatmap_predict_chemdiv.png}
+        \caption{Correlation matrix}
+        %%\label{Figure8}
+    \end{subfigure}
+    
+    \caption{Correlation analysis from the dataset used to the first predict model}
+    \label{Figure8}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering 
+     \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/cor_plot3_pchembl_predict_chemdiv.png}	
+     \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to the first predict model} 
+     \label{Figure9}
+ \end{figure}
+
+ \begin{figure}[ht]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/pairplot_matrix_predict_zinc.png} 
+        \caption{Pairplot correlation matrix}
+        %%\label{fig:subim1}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/migheatmap_predict_zinc.png}
+        \caption{Correlation matrix}
+        %%\label{fig:subim2}
+    \end{subfigure}
+    
+    \caption{Correlation analysis from the dataset used to the second predict model}
+    \label{Figure10}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering 
+     \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/cor_plot3_pchembl_predict_zinc.png}	
+     \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to the second predict model} 
+     \label{Figure11}
+ \end{figure}
+
+ %%SIMILARITY
+ \begin{figure}[ht]
+    \centering 
+     \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/best_similarity_resultspred.png}	
+     \caption{Results from the similarity analysis from the two predicted results.} 
+     \label{Figure12}
+ \end{figure}
+
+ \begin{figure}[ht]
+    \centering 
+     \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/top10_mol_chemdiv.png}	
+     \caption{The 10 molecules from the first predicted results with a higher activity value} 
+     \label{Figure13}
+ \end{figure}
+
+ \begin{figure}[ht]
+    \centering 
+     \includegraphics[width=0.4\textwidth]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/top10_mol_zinc.png}	
+     \caption{The 10 molecules from the second predicted results with a higher activity value} 
+     \label{Figure14}
+ \end{figure}
+
+ \begin{figure}[ht]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_chemdiv.png} 
+        \caption{A. First predict. ChemDiv}
+        %%\label{fig:subim1}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{/Users/carlafeliu/Docs/Master/TFM/github/TFM/output/barplot_matrix_predict_zinc.png}
+        \caption{B. Second predict. Zinc}
+        %%\label{fig:subim2}
+    \end{subfigure}
+    
+    \caption{Barplot matrix analysis from predicted results among IC50. }
+    \label{Figure15}
+\end{figure}
 
 
+ We conclude the analysis with a similarity test of the top 10 molecules selected from each of the datasets resulting from the predictions (Table~\ref{Figure12}). Using the Tanimoto coefficient, a score of 1 exactly similarity, while 0 indicates no similarity. It is important to note that in all cases, very low similarity values are observed, with a maximum value of 0.2.
+
+ Upon examining the images of the top 10 molecules from the first set of predictions (Figure{\ref{Figure13}}), the top 10 molecules from the second set of predictions (Figure~\ref{Figure14}), and referring to Table~\ref{Figure12}, we observe that the molecules with the highest similarity values within the results are M1 from Figure~\ref{Figure13} with M5 and M7 from Figure~\ref{Figure14}, both having a value of 0.207. The next best similarity results at value 0.2 , are for M4 on Figure~\ref{Figure13} also with M5 and M7 on Figure~\ref{Figure14}. 
+ 
 
 \section{Discussion}
-%%\label{}
 
+When analyzing the results of the different Chemprop trainings, we have used training 4 to make predictions for our study. We considered it to be the most appropriate and well-fitted, as both the MSE, RMSE, and MAE values are the most favorable in this training. Although the highest R2 value was obtained in training 2 with a value of 0.68, the difference between this result and training 4 with an R2 of 0.67 is negligible, so we have decided to proceed with training 4 as the model to predict our results.
+
+The farthest result from a well-fitted model was observed in training 1, which can be attributed to the fact that this training was performed with a dataframe containing very raw data, with many repeated SMILES, which could have affected the machine learning model. Therefore, we can see how the importance of good data cleaning is reflected in the training results.
+
+Upon analyzing the prediction model versus the trained model, we observe that for the data of greatest interest to us, those with higher IC50 values, the regression line shows an increase in dispersion (see figure). This indicates that our model is not entirely reliable, especially for results where IC50 is crucial for inhibitor discovery.
+
+Regarding the features analyzed in the prediction results based on the correlation of variables, in all three cases analyzed (see Figures~\ref{Figure6},~\ref{Figure8},~\ref{Figure10}), we can see a strong correlation between the MW and Heavy Atom Count features. This may be due to the fact that heavier molecules tend to have more heavy atoms.
+
+As for the relationship between variables and the IC50 value, the analysis suggests that in none of the three datasets is there a strong correlation with this variable, particularly in the training dataset. This indicates that a strong interaction activity is not significantly correlated with these chemical characteristics. Nonetheless, in Figure~\ref{Figure15} of the predictions, we can observe how it supports the results of the correlation heatmap, where it is evident that the variables H-bond acceptor, TPSA, Heavy Atom Counts, and Rotatable Bonds are the ones with the highest values.
+
+Finally, regarding the similarity analysis, we have been unable to obtain conclusive results because the maximum similarity values are very low and, therefore, unreliable. However, we have observed that molecules M5 and M7 from the second training set, based on zinc data, are highly similar. We have confirmed this initially through Figure X and secondly by noticing that they share the same similarity values with a specific molecule from the first Chemdiv training set. This could serve as a starting point for further research to understand the characteristics of these molecules.
+
+We have also noticed some similarity among all molecules in the Chemdiv database, as they interact with very little difference in similarity compared to molecules in the zinc database. This is attributed to the fact that all these molecules originate from a cisteine protease warheads database, hence sharing similar features.
 
 \section{Conclusions}
 
+After conducting an analysis and training algorithms of ANN that allowed us to identify patterns and improve the stability of the prediction model. However, even though we have made progress in this regard, the results have not yet reached the necessary optimization to ensure full data reliability. This suggests the importance of conducting deeper and more comprehensive training to achieve a more precise adaptation of the model and enhance its predictive capacity.
 
-\section*{Acknowledgements}
-Thanks to ...
+Regarding the search for patterns through the correlation between molecular features, our results indicate that we have not found a strong enough correlation between the analyzed variables and inhibitory activity. This finding leads us to consider the need to expand our research, exploring a broader set of molecular features to delve deeper into the relationship between these features and inhibitory activity, which could shed light on new markers and predictors.
 
-%% The Appendices part is started with the command \appendix;
-%% appendix sections are then done as normal sections
+Finally, despite the overall unfruitful search for similarities, we highlight the interesting discovery of two highly similar molecules in the zinc database, both with elevated IC50 values. This discovery could serve as a starting point for further investigations exploring the relationship between these molecules and their ability to inhibit cysteine proteases, thus opening new avenues of study in this field.
+
 \appendix
 
-\section{Appendix title 1}
-%% \label{}
+\section{Data availability}
 
-\section{Appendix title 2}
-%% \label{}
+The code used for this study is available on the following GitHub repository: https://github.com/carlafeliu/TFM
 
-%% If you have bibdatabase file and want bibtex to generate the
-%% bibitems, please use
-%%
-
-\section{Bibliography}
-\bibliographystyle{unsrtnat} 
+%%\section{References}
+%%\bibliographystyle{unsrtnat} 
 \bibliography{library}
-
 
 
 \end{document}
 
-\endinput
-%%
-%% End of file `elsarticle-template-harv.tex'.
+%%\endinput
+
