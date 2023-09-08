@@ -10,6 +10,18 @@ Satya~P. Gupta and Sayan~Dutta Gupta.
 \newblock {\em Cancer-leading proteases: An introduction}.
 \newblock Elsevier, 1 2020.
 
+\bibitem{Nicholson2013}
+D.~W. Nicholson and G.~Melino.
+\newblock {\em Caspases and Cell Death}, pages 388--396.
+\newblock Elsevier Inc., 2 2013.
+
+\bibitem{cath}
+Johanna~A Joyce, Amos Baruch, Kareem Chehade, Nicole Meyer-Morse, Enrico
+  Giraudo, Fong-Ying Tsai, Doron~C Greenbaum, Jeffrey~H Hager, Matthew Bogyo,
+  and Douglas Hanahan.
+\newblock Cathepsin cysteine proteases are effectors of invasive growth and
+  angiogenesis during multistage tumorigenesis.
+
 \bibitem{Berdowska2004}
 Izabela Berdowska.
 \newblock Cysteine proteases as disease markers, 4 2004.
@@ -25,13 +37,6 @@ Vasilena Gocheva, Wei Zeng, Danxia Ke, David Klimstra, Thomas Reinheckel,
 \newblock Distinct roles for cysteine cathepsin genes in multistage
   tumorigenesis.
 \newblock {\em Genes and Development}, 20:543--556, 3 2006.
-
-\bibitem{cath}
-Johanna~A Joyce, Amos Baruch, Kareem Chehade, Nicole Meyer-Morse, Enrico
-  Giraudo, Fong-Ying Tsai, Doron~C Greenbaum, Jeffrey~H Hager, Matthew Bogyo,
-  and Douglas Hanahan.
-\newblock Cathepsin cysteine proteases are effectors of invasive growth and
-  angiogenesis during multistage tumorigenesis.
 
 \bibitem{Maurais2019}
 Aaron~J. Maurais and Eranthie Weerapana.
@@ -53,13 +58,11 @@ Patrick Hop, Brandon Allgood, and Jessen Yu.
   outperform those engineered by domain experts.
 \newblock {\em Molecular Pharmaceutics}, 15:4371--4377, 10 2018.
 
-\bibitem{Alzubaidi2021}
-Laith Alzubaidi, Jinglan Zhang, Amjad~J. Humaidi, Ayad Al-Dujaili, Ye~Duan,
-  Omran Al-Shamma, J.~Santamaría, Mohammed~A. Fadhel, Muthana Al-Amidie, and
-  Laith Farhan.
-\newblock Review of deep learning: concepts, cnn architectures, challenges,
-  applications, future directions.
-\newblock {\em Journal of Big Data}, 8, 12 2021.
+\bibitem{Nag2022}
+Sagorika Nag, Anurag~T.K. Baidya, Abhimanyu Mandal, Alen~T. Mathew, Bhanuranjan
+  Das, Bharti Devi, and Rajnish Kumar.
+\newblock Deep learning tools for advancing drug discovery and development, 5
+  2022.
 
 \bibitem{Talevi2020}
 Alan Talevi, Juan~Francisco Morales, Gregory Hather, Jagdeep~T. Podichetty,
@@ -69,6 +72,20 @@ Alan Talevi, Juan~Francisco Morales, Gregory Hather, Jagdeep~T. Podichetty,
 \newblock Machine learning in drug discovery and development part 1: A primer.
 \newblock {\em CPT: Pharmacometrics and Systems Pharmacology}, 9:129--142, 3
   2020.
+
+\bibitem{Yang2019}
+Kevin Yang, Kyle Swanson, Wengong Jin, Connor Coley, Philipp Eiden, Hua Gao,
+  Angel Guzman-Perez, Timothy Hopper, Brian Kelley, Miriam Mathea, Andrew
+  Palmer, Volker Settels, Tommi Jaakkola, Klavs Jensen, and Regina Barzilay.
+\newblock Analyzing learned molecular representations for property prediction.
+\newblock {\em Journal of Chemical Information and Modeling}, 59:3370--3388, 8
+  2019.
+
+\bibitem{Wallisch2009}
+Pascal Wallisch, Michael Lusignan, Marc Benayoun, Tanya~I. Baker, Adam~S.
+  Dickey, and Nicholas~G. Hatsopoulos.
+\newblock Neural networks part i: Unsupervised learning.
+\newblock {\em Matlab for Neuroscientists}, pages 307--317, 1 2009.
 
 \bibitem{Wang2022}
 Liying Wang, Zhongtian Yu, Shiwei Wang, Zheng Guo, Qi~Sun, and Luhua Lai.
@@ -85,6 +102,11 @@ Focused and targeted libraries - chemdiv inc.
 \bibitem{zincweb}
 Teague Sterling and John~J. Irwin.
 \newblock Zinc 15 - ligand discovery for everyone, 11 2015.
+
+\bibitem{pic50}
+Aman Thakur, Ajay Kumar, Vivek Sharma, and Vineet Mehta.
+\newblock Pic50: An open source tool for interconversion of pic 50 values and
+  ic 50 for efficient data representation and analysis.
 
 \bibitem{rdkitweb}
 Rdkit - development infrastructure for the rdkit software provided by github
