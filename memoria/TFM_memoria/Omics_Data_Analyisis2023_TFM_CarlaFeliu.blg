@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Omics_Data_Analyisis2023_TFM_CarlaFeliu.aux
+The style file: unsrt.bst
+Database file #1: library_tfm.bib
+Warning--entry type for "Berdowska2004" isn't style-file defined
+--line 28 of file library_tfm.bib
+Warning--entry type for "cath" isn't style-file defined
+--line 72 of file library_tfm.bib
+Warning--entry type for "Maurais2019" isn't style-file defined
+--line 77 of file library_tfm.bib
+Warning--entry type for "Aljoundi2020" isn't style-file defined
+--line 91 of file library_tfm.bib
+Warning--entry type for "Hughes2011" isn't style-file defined
+--line 107 of file library_tfm.bib
+Warning--entry type for "chemblweb" isn't style-file defined
+--line 182 of file library_tfm.bib
+Warning--entry type for "chemdivweb" isn't style-file defined
+--line 187 of file library_tfm.bib
+Warning--entry type for "zincweb" isn't style-file defined
+--line 209 of file library_tfm.bib
+Warning--entry type for "rdkitweb" isn't style-file defined
+--line 227 of file library_tfm.bib
+Warning--empty booktitle in Mohamed2006
+You've used 18 entries,
+            1791 wiz_defined-function locations,
+            567 strings with 7217 characters,
+and the built_in function-call counts, 3495 in all, are:
+= -- 230
+> -- 248
+< -- 2
++ -- 90
+- -- 72
+* -- 233
+:= -- 562
+add.period$ -- 42
+call.type$ -- 18
+change.case$ -- 16
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 136
+empty$ -- 350
+format.name$ -- 72
+if$ -- 769
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 11
+newline$ -- 81
+num.names$ -- 15
+pop$ -- 84
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 97
+stack$ -- 0
+substring$ -- 97
+swap$ -- 28
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 20
+width$ -- 20
+write$ -- 161
+(There were 10 warnings)
