@@ -109,9 +109,9 @@
 
 \begin{abstract}
 %% Text of abstract
-Cysteine proteases, are vital enzymes to biological processes but can contribute to diseases when dysregulated. Covalent inhibitors, which form stable bonds with target molecules, offer potential benefits. This study, explores the use of Artificial Neural Networks (ANNs) to identify covalent targets for cysteine protease inhibition. The research aims to develop an efficient approach to drug discovery using deep learning techniques. 
-The study involves selecting appropriate compound databases, one with known interactions with the target and two others without such interactions, for the purpose of making predictions. ANNs are trained using the prepared datasets containing known interaction activities, employing various training methodologies to explore and enhance the stability and predictive accuracy of the model when applied to the other datasets for generating predictions. These results are meticulously analyzed to assess the reliability of the predictions in the context of inhibitor discovery. 
-This research highlights the potential of machine learning, particularly ANNs, as a powerful tool in streamlining the drug discovery process by facilitating the identification of promising compounds for covalent inhibition.
+Cysteine proteases, are vital enzymes to biological processes, but they can contribute to diseases when dysregulated. They are characterised by having a catalytic diad of cysteine (active site) and histidine. The search for inhibitors of cysteine proteases has become a goal in medical and pharmacological research. Covalent bonds are formed by the interaction of the nucleophilic cysteine and reactive functional group of the ligand. These bonds are more effective than non-covalent ones, resulting in complete inhibition of the target due to their long permanence compared to non-covalent. Machine Learning (ML) has proven highly effective in drug discovery, using various algorithms to predicting novel compound properties. This study explores a Deep Learning (DL), a ML technique. DL techniques include an Artificial Neural Networks (ANNs), which are artificial neuron units capable of transmitting signals to each other through multiple layers to make predictions.
+This study works with an algorithm based on a directed message passing neural network (D-MPNN) module for molecular extraction and a feed-forward neural network (FNN) for property prediction. First, we select appropriate compound databases, one with known interactions with the target and two others without such interactions, for the purpose of making predictions abut potential cysteine protease inhibitors. The DL model is trained using the prepared datasets containing known interaction activities, employing various training methodologies to explore and enhance the stability and predictive accuracy when applied to other datasets for generating predictions. These results are meticulously analyzed to assess the reliability of the predictions in the context of inhibitor discovery. 
+This research highlights the potential of machine learning, particularly D-MPNN, as a powerful tool in streamlining the drug discovery process by facilitating the identification of promising compounds for covalent inhibition.
 
 
 \end{abstract}
@@ -129,7 +129,7 @@ This research highlights the potential of machine learning, particularly ANNs, a
 
 \begin{keyword}
 %% keywords here, in the form: keyword \sep keyword, up to a maximum of 6 keywords
-Cysteine protease \sep Deep learning \sep Artificial Neural Networks \sep Covalent inhibitors \sep MPNN
+Cysteine protease \sep Deep learning \sep Artificial Neural Networks \sep Covalent inhibitors \sep Directed message passing neural network (D-MPNN)
 
 %% PACS codes here, in the form: \PACS code \sep code
 
@@ -197,7 +197,7 @@ Specific objectives:
 
 \begin{enumerate}
     \item Identify a database with known targets of cysteine proteases that includes inhibitory activity, which will serve as the training data of our ML model. 
-    \item Download the database and extract the (Simplified Molecular Input Line Entry Sistem)SMILES information. Prepare the required dataframe structure for working with the ML algorithm, obtaining various features for each molecule and its inhibitory activity (IC50).
+    \item Download the database and extract the (Simplified Molecular Input Line Entry Sistem)SMILES information. Prepare the required dataframe structure for working with the ML algorithm, obtaining various features for each molecule and its inhibitory activity (pIC50).
     \item Train the chemprop model using various approaches, evaluating which one makes the model more stable for our predictions. 
     \item Identify suitable databases to obtain the molecules for our predictions. Similar to the training dataframe, construct the structure necessary to make the predictions with our training model. 
     \item Analyze the data generated from the predictions made by the ML model, checking the correlation of the data and their similarity to understand if the predictions obtained are suitable for our questions raised. 
@@ -214,7 +214,7 @@ In this study, we worked with three different databases to extract the necessary
 
 ChEMBL is a database of bioactive small molecules similar to drugs, containing calculated properties and bioactivities. \cite{chemblweb}
 
-Our interest in this database is to obtain information about molecules that can interact with cysteine proteases in order to establish a reference point for interaction activity, allowing us to train our ML model. To access the relevant information to our study, we filtered the ChEMBL database with the term "cysteine protease" and extract the resulting targets. Once we obtained the cysteine protease targets, we used the python "requests" module to retrieve information about all the molecules interacting with each of the targets, along with their interaction activity, represented by the -log(IC50 molar) value. The value was used to train our ML model. 
+Our interest in this database is to obtain information about molecules that can interact with cysteine proteases in order to establish a reference point for interaction activity, allowing us to train our ML model. To access the relevant information to our study, we filtered the ChEMBL database with the term "cysteine protease" and extract the resulting targets. Once we obtained the cysteine protease targets, we used the python "requests" module to retrieve information about all the molecules interacting with each of the targets, along with their interaction activity, represented by the pIC50 value. The value was used to train our ML model. 
 
 \subsubsection{ChemDiv}
 
@@ -268,13 +268,13 @@ The features are the characteristics to describe data. The following features ha
 
 To carry out the process of training machine learning models effectively, it is crucial to have suitable and properly prepared dataset. Therefore, prior preparation is required. 
 
-This data structure should have a first column containing the SMILES of the molecules, features describing the molecules, and finally, in a last row, the interaction activity of these molecules, the IC50 value. Data preparation also includes conducting a thorough analysis of the data structure, which is essential for a deep understanding of the data and, consequently, for conducting a more accurate result analysis. 
+This data structure should have a first column containing the SMILES of the molecules, features describing the molecules, and finally, in a last row, the interaction activity of these molecules, the pIC50 value. Data preparation also includes conducting a thorough analysis of the data structure, which is essential for a deep understanding of the data and, consequently, for conducting a more accurate result analysis. 
 
 \subsubsection{ANN training}
 
 To prepare the training data, we started with a list of all the targets that interact with cysteine proteases and their interactions, from the ChEMBL database. These initial data will provide us a lot of information, but there is an important data preprocessing step before introducing the dataframe into our model. 
 
-From this dataframe containing the ligands of the cysteine protease targets, we extracted the list of all the ChEMBL IDs of the molecules that interact with them, along with their IC50 activity values. Using a ChEMBL API and Python function, we obtained the SMILES for each of the registered molecules. 
+From this dataframe containing the ligands of the cysteine protease targets, we extracted the list of all the ChEMBL IDs of the molecules that interact with them, along with their pIC50 activity values. Using a ChEMBL API and Python function, we obtained the SMILES for each of the registered molecules. 
 
 The data cleaning process is very important, which includes the removal of null values, as they represent a lack of information that may not be accepted or could influence the outcome of the algorithm, and the elimination of duplicated SMILES to avoid duplicated information. 
 
@@ -340,7 +340,7 @@ The different dataframes prepared for training the model originated from a datas
      Train 4 & 19,262 & 11,703 & MinMaxScale\\ 
      \hline
     \end{tabular}
-\caption{Training sets}
+\caption{Training sets characteristics}
 \label{Table1}
 \end{table}
 
@@ -370,7 +370,7 @@ The results obtained from the 4 training runs conducted with the ML model algori
          Train 4 & 0.01 & 0.11 & 0.67 & 0.08\\ 
          \hline
         \end{tabular}
-    \caption{Training sets}
+    \caption{Results of the evaluation metrics for the training sessions conducted with the model}
     \label{Table2}
     \end{table}
  
@@ -395,14 +395,14 @@ When analyzing the results of the histogram (Figure~\ref{Figure5}), it is noted 
 \begin{figure}[ht]
     \centering 
      \includegraphics[width=0.5\textwidth]{residual_error_predict_chemdiv.png}	
-     \caption{Histogram of predicted residual errors} 
+     \caption{Histogram of predicted residual errors, comparing 200 molecules from real values against predicted values} 
      \label{Figure5}
  \end{figure}
 
  \begin{figure}[ht]
     \centering 
      \includegraphics[width=0.5\textwidth]{linregresion_predict_chemdiv.png}	
-     \caption{Linear regression of predicted residual errors} 
+     \caption{Linear regression of predicted residual errors, comparing 200 molecules from real values against predicted values} 
      \label{Figure6}
  \end{figure}
 
@@ -430,7 +430,7 @@ When analyzing the results of the histogram (Figure~\ref{Figure5}), it is noted 
 \begin{figure*}
     \centering 
      \includegraphics[width=0.6\textwidth]{cor_plot3_pchembl_train4.png}	
-     \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to train the model} 
+     \caption{Correlation heatmap of variables with the pIC50 value from the dataset used to train the model} 
      \label{Figure8}
  \end{figure*}
 
@@ -451,21 +451,21 @@ When analyzing the results of the histogram (Figure~\ref{Figure5}), it is noted 
         %%\label{Figure8}
     \end{subfigure}
     
-    \caption{Correlation analysis from the dataset used to the first predict model (ChemDiv). (a)Pariplot correlation matrix (b)Correlation matrix heatmap}
+    \caption{Correlation analysis of the features to determine if there is any correlation pattern among them. Results of the first predicted model (ChemDiv). (a)Pariplot correlation matrix (b)Correlation matrix heatmap}
     \label{Figure9}
 \end{figure*}
 
 \begin{figure}[h]
     \centering 
      \includegraphics[width=0.5\textwidth]{cor_plot3_pchembl_predict_chemdiv.png}	
-     \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to the first predict model} 
+     \caption{Correlation heatmap of variables with the pIC50 value from the dataset used to the first predict model (ChemDiv)} 
      \label{Figure10}
  \end{figure}
 
  \begin{figure}[h]
     \centering 
      \includegraphics[width=0.5\textwidth]{cor_plot3_pchembl_predict_zinc.png}	
-     \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to the second predict model} 
+     \caption{Correlation heatmap of variables with the pIC50 value from the dataset used to the second predict model (Zinc)} 
      \label{Figure11}
  \end{figure}
 
@@ -484,7 +484,7 @@ When analyzing the results of the histogram (Figure~\ref{Figure5}), it is noted 
         %%\label{fig:subim2}
     \end{subfigure}
     
-    \caption{Barplot matrix analysis from predicted results among IC50. (a)Fist predict, Chemdiv (b)Second predict, Zinc }
+    \caption{Barplot matrix analysis from predicted results of each feature among pIC50. Each subgraph bar in figures A and B, displays the dataset for each feacture according to its pIC50. It provides information on how each feature relates to pIC50. (a)Fist predict, Chemdiv (b)Second predict, Zinc }
     \label{Figure12}
 \end{figure*}
 
@@ -502,7 +502,7 @@ When analyzing the results of the histogram (Figure~\ref{Figure5}), it is noted 
         %%\label{fig:subim2}
     \end{subfigure}
     
-    \caption{Correlation analysis from the dataset used to the second predict model}
+    \caption{ Correlation analysis of the features to determine if there is any correlation pattern among them. Results of the second predicted model (Zinc). (a)Pariplot correlation matrix (b)Correlation matrix heatmap}
     \label{Figure13}
 \end{figure*}
 
@@ -511,27 +511,27 @@ When analyzing the results of the histogram (Figure~\ref{Figure5}), it is noted 
  \begin{figure*}
     \centering 
      \includegraphics[width=0.8\textwidth]{top10_mol_chemdiv.png}	
-     \caption{The 10 molecules from the first predicted results with a higher activity value} 
+     \caption{The 10 molecules from the first predicted results (ChemDiv) with a higher activity value (pIC50)} 
      \label{Figure14}
  \end{figure*}
 
  \begin{figure*}
     \centering 
      \includegraphics[width=0.8\textwidth]{top10_mol_zinc.png}	
-     \caption{The 10 molecules from the second predicted results with a higher activity value} 
+     \caption{The 10 molecules from the second predicted results (Zinc) with a higher activity value (pIC50)} 
      \label{Figure15}
  \end{figure*}
 
- \begin{figure}[h]
+ \begin{figure*}
     \centering 
      \includegraphics[width=0.6\textwidth]{best_similarity_resultspred.png}	
-     \caption{Results from the similarity analysis from the two predicted results.} 
+     \caption{This table displays the results of the similarity analysis between the top molecules from each predicted dataset} 
      \label{Figure16}
- \end{figure}
+ \end{figure*}
 
- We conclude the analysis with a similarity test of the top 10 molecules selected from each of the datasets resulting from the predictions (Table~\ref{Figure13}). Using the Tanimoto coefficient, a score of 1 exactly similarity, while 0 indicates no similarity. It is important to note that in all cases, very low similarity values are observed, with a maximum value of 0.2.
+ We conclude the analysis with a similarity test of the top 10 molecules selected from each of the datasets resulting from the predictions (Table~\ref{Figure16}). Using the Tanimoto coefficient, a score of 1 exactly similarity, while 0 indicates no similarity. It is important to note that in all cases, very low similarity values are observed, with a maximum value of 0.2.
 
- Upon examining the images of the top 10 molecules from the first set of predictions (Figure{\ref{Figure15}}), the top 10 molecules from the second set of predictions (Figure~\ref{Figure16}), and referring to Table~\ref{Figure14}, we observe that the molecules with the highest similarity values within the results are M1 from Figure~\ref{Figure15} with M5 and M7 from Figure~\ref{Figure16}, both having a value of 0.207. The next best similarity results at value 0.2 , are for M4 on Figure~\ref{Figure14} also with M5 and M7 on Figure~\ref{Figure16}. 
+ Upon examining the images of the top 10 molecules from the first set of predictions (Figure{\ref{Figure14}}), the top 10 molecules from the second set of predictions (Figure~\ref{Figure15}), and referring to Table~\ref{Figure16}, we observe that the molecules with the highest similarity values within the results are M1 from Figure~\ref{Figure14} with M5 and M7 from Figure~\ref{Figure15}, both having a value of 0.207. The next best similarity results at value 0.2 , are for M4 on Figure~\ref{Figure14} also with M5 and M7 on Figure~\ref{Figure15}. 
  
 
 \section{Discussion}
@@ -540,11 +540,11 @@ When analyzing the results of the different Chemprop trainings, we have used tra
 
 The most desviated result from a well-fitted model was observed in training 1, which can be attributed to the fact that this training was performed with a dataframe containing very raw data, with many repeated SMILES, which could have affected the machine learning model. Therefore, we can see how the importance of good data cleaning is reflected in the training results.
 
-Upon analyzing the prediction model versus the trained model, we observe that for the data of greatest interest to us, those with higher IC50 values, the regression line shows an increase in dispersion (see Figure~\ref{Figure6}. This indicates that our model is not entirely reliable, especially for results where IC50 is crucial for inhibitor discovery.
+Upon analyzing the prediction model versus the trained model, we observe that for the data of greatest interest to us, those with higher pIC50 values, the regression line shows an increase in dispersion (see Figure~\ref{Figure6}. This indicates that our model is not entirely reliable, especially for results where pIC50 is crucial for inhibitor discovery.
 
 Regarding the features analyzed in the prediction results based on the correlation of variables, in all three cases analyzed (see Figures~\ref{Figure7},~\ref{Figure9},~\ref{Figure13}), we can see a strong correlation between the MW and Heavy Atom Count features. This may be due to the fact that heavier molecules tend to have more heavy atoms.
 
-As for the relationship between variables and the IC50 value, the analysis suggests that in none of the three datasets is there a strong correlation with this variable, particularly in the training dataset. This indicates that a strong interaction activity is not significantly correlated with these chemical characteristics. Nonetheless, in Figure~\ref{Figure12} of the predictions, we can observe how it supports the results of the correlation heatmap, where it is evident that the variables H-bond acceptor, TPSA, Heavy Atom Counts, and Rotatable Bonds are the ones with the highest values.
+As for the relationship between variables and the pIC50 value, the analysis suggests that in none of the three datasets is there a strong correlation with this variable, particularly in the training dataset. This indicates that a strong interaction activity is not significantly correlated with these chemical characteristics. Nonetheless, in Figure~\ref{Figure12} of the predictions, we can observe how it supports the results of the correlation heatmap, where it is evident that the variables H-bond acceptor, TPSA, Heavy Atom Counts, and Rotatable Bonds are the ones with the highest values.
 
 Finally, regarding the similarity analysis, we have been unable to obtain conclusive results because the maximum similarity values are very low and, therefore, unreliable. However, we have observed that molecules M5 and M7 from the second training set, based on zinc data, are highly similar. We have confirmed this initially through Figure X and secondly by noticing that they share the same similarity values with a specific molecule from the first Chemdiv training set. This could serve as a starting point for further research to understand the characteristics of these molecules.
 
@@ -557,7 +557,7 @@ After conducting an analysis and training algorithms of ANN that allowed us to i
 
 Regarding the search for patterns through the correlation between molecular features, our results indicate that we have not found a strong enough correlation between the analyzed variables and inhibitory activity. This finding leads us to consider the need to expand our research, exploring a broader set of molecular features to delve deeper into the relationship between these features and inhibitory activity, which could shed light on new markers and predictors.
 
-Finally, despite the overall unfruitful search for similarities, we highlight the interesting discovery of two highly similar molecules in the zinc database, both with elevated IC50 values. This discovery could serve as a starting point for further investigations exploring the relationship between these molecules and their ability to inhibit cysteine proteases, thus opening new avenues of study in this field.
+Finally, despite the overall unfruitful search for similarities, we highlight the interesting discovery of two highly similar molecules in the zinc database, both with elevated pIC50 values. This discovery could serve as a starting point for further investigations exploring the relationship between these molecules and their ability to inhibit cysteine proteases, thus opening new avenues of study in this field.
 
 In summary, this study highlights the potential of machine learning, particularly artificial neural networks (ANNs), as a powerful tool for streamlining the drug discovery process by facilitating the identification of promising compounds for covalent inhibition. Although the results may not have yielded effective inhibitors in this specific context, this research underscores the value of ML technology in exploring new avenues and approaches in the quest for innovative therapies.
 
