@@ -249,6 +249,21 @@ The inhibition constant IC50 value is a quantitative measure of a substance's po
 \end{equation}
 Higher values of pIC50 indicate exponentially more potent inhibitors \cite{pic50}.
 
+\subsection{Features}
+
+The features are the characteristics to describe data. The following features have been introduced to be constructed the dataframes for inputting into the ANN model:
+\begin{itemize}
+    \item Molecular weight (MW): The total sum of the atomic weights. 
+    \item LogP: The lipophilicity or hydrophobicity of a molecule.
+    \item Number of hydrogen donors: Number of hydrogen atoms in a molecule that are capable of forming hydrogen bonds as donors.
+    \item Number of hydrogen acceptors: Number of sites in a molecule that can form hydrogen bonds as acceptors.
+    \item Topological Polar Surface Area (TPSA): Quantifies the surface area of a molecule that is polar or can potentially participate in hydrogen bonding.
+    \item Number of rotatable bonds: Number of single bonds in a molecule that are not part of a rigid ring structure.
+    \item Ring counts: Number of distinct ring structures within a molecule.
+    \item Heavy atom counts: Number of non-hydrogen atoms in a molecule.
+    \item Fraction of sp3 hybridized carbons (CSP3): Fraction of carbons in a molecule that have sp3 hybridization.
+    \item Balaban J Index: Information about the degree of branching in a molecule's structure.
+\end{itemize}
 \subsection{Data preparation and curation}
 
 To carry out the process of training machine learning models effectively, it is crucial to have suitable and properly prepared dataset. Therefore, prior preparation is required. 
@@ -396,14 +411,14 @@ When analyzing the results of the histogram (Figure~\ref{Figure5}), it is noted 
  First of all, to analyze the dataset used to train the model (ChEMBL database), we can observe in Figure~\ref{Figure7} that the variables most correlated with each other are Molecular Weight (MW) with Heavy Atom Counts and Hydrogen Bond Donor (H-bond donor) with Topological Polar Surface Area (TPSA) with correlation values of 0,99 and 0,82 respectively. Looking at Figure~\ref{Figure8}, we see that the maximum correlation value is 0,13. This indicates that, in general, the correlation of the variables with what interests us is not very high. The variables most correlated with the value of inhibitory activity within the given values, are Rotatable Bonds, with a value of 0,13, and Balaban J Index, with a value of 0,11. 
 
 \begin{figure*}
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.8\linewidth, height=4cm]{pairplot_matrix_train4.png} 
+    \begin{subfigure}{0.6\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{pairplot_matrix_train4.png} 
         \caption{}%%Pairplot correlation matrix
         %%\label{fig:subim1}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.8\linewidth, height=4cm]{migheatmap_train4.png}
+    \begin{subfigure}{0.6\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{migheatmap_train4.png}
         \caption{} %%Correlation matrix
         %%\label{fig:subim2}
     \end{subfigure}
@@ -412,26 +427,26 @@ When analyzing the results of the histogram (Figure~\ref{Figure5}), it is noted 
     \label{Figure7}
 \end{figure*}
 
-\begin{figure}[h]
+\begin{figure*}
     \centering 
-     \includegraphics[width=0.5\textwidth]{cor_plot3_pchembl_train4.png}	
+     \includegraphics[width=0.6\textwidth]{cor_plot3_pchembl_train4.png}	
      \caption{Correlation heatmap of variables with the -log(molar IC50) value from the dataset used to train the model} 
      \label{Figure8}
- \end{figure}
+ \end{figure*}
 
  The results for the dataset of the first prediction (ChemDiv database), show that the most correlated variables among them, as see in Figure~\ref{Figure9}, are MW with Heavy Atom Counts, H-bond Donor with Rotatable Bonds and H-bond Acceptor with TPSA, with correlation values of 0,97 , 0,85 and 0,85 respectively. Regarding the relationship of each variable with the activity value (Figure~\ref{Figure10}), the ones with the highest correlation are H-bond acceptor and Rotatable Bonds with correlation values of 0,34 and 0,3. 
 
- For the dataset of the second train (Zinc database), the variables most related to each other, as seen in Figure~\ref{Figure12}, are MW with Heavy Atom Counts and TPSA with Heavy Atom Counts, with correlation values of 0,98 and 0,9 respectively. The variables that are most related to the activity value (Figure~\ref{Figure11}) are H-bond acceptor and TPSA with values 0,41 and 0,34. 
+ For the dataset of the second train (Zinc database), the variables most related to each other, as seen in Figure~\ref{Figure13}, are MW with Heavy Atom Counts and TPSA with Heavy Atom Counts, with correlation values of 0,98 and 0,9 respectively. The variables that are most related to the activity value (Figure~\ref{Figure11}) are H-bond acceptor and TPSA with values 0,41 and 0,34. 
 
 \begin{figure*}
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.8\linewidth, height=4cm]{pairplot_matrix_predict_chemdiv.png} 
+    \begin{subfigure}{0.6\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{pairplot_matrix_predict_chemdiv.png} 
         \caption{}
         %%\label{fig:subim1}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.8\linewidth, height=4cm]{migheatmap_predict_chemdiv.png}
+    \begin{subfigure}{0.6\textwidth}
+        \includegraphics[width=0.9\linewidth, height=6cm]{migheatmap_predict_chemdiv.png}
         \caption{}
         %%\label{Figure8}
     \end{subfigure}
@@ -455,65 +470,68 @@ When analyzing the results of the histogram (Figure~\ref{Figure5}), it is noted 
  \end{figure}
 
  \begin{figure*}
-    \begin{subfigure}{0.5\textwidth}
+    \centering
+    \begin{subfigure}{1\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth, height=5cm]{barplot_matrix_predict_chemdiv.png} 
+        \caption{}
+        %%\label{fig:subim1}
+    \end{subfigure}
+    \begin{subfigure}{1\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth, height=5cm]{barplot_matrix_predict_zinc.png}
+        \caption{}
+        %%\label{fig:subim2}
+    \end{subfigure}
+    
+    \caption{Barplot matrix analysis from predicted results among IC50. (a)Fist predict, Chemdiv (b)Second predict, Zinc }
+    \label{Figure12}
+\end{figure*}
+
+
+ \begin{figure*}
+    \begin{subfigure}{0.6\textwidth}
         \includegraphics[width=0.9\linewidth, height=6cm]{pairplot_matrix_predict_zinc.png} 
         \caption{Pairplot correlation matrix}
         %%\label{fig:subim1}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.5\textwidth}
+    \begin{subfigure}{0.6\textwidth}
         \includegraphics[width=0.9\linewidth, height=6cm]{migheatmap_predict_zinc.png}
         \caption{Correlation matrix}
         %%\label{fig:subim2}
     \end{subfigure}
     
     \caption{Correlation analysis from the dataset used to the second predict model}
-    \label{Figure12}
+    \label{Figure13}
 \end{figure*}
 
  %%SIMILARITY
- \begin{figure}[h]
-    \centering 
-     \includegraphics[width=0.6\textwidth]{best_similarity_resultspred.png}	
-     \caption{Results from the similarity analysis from the two predicted results.} 
-     \label{Figure13}
- \end{figure}
 
- \begin{figure*}[h]
+ \begin{figure*}
     \centering 
      \includegraphics[width=0.8\textwidth]{top10_mol_chemdiv.png}	
      \caption{The 10 molecules from the first predicted results with a higher activity value} 
      \label{Figure14}
  \end{figure*}
 
- \begin{figure*}[h]
+ \begin{figure*}
     \centering 
      \includegraphics[width=0.8\textwidth]{top10_mol_zinc.png}	
      \caption{The 10 molecules from the second predicted results with a higher activity value} 
      \label{Figure15}
  \end{figure*}
 
- \begin{figure*}
-    \centering
-    \begin{subfigure}{1\textwidth}
-        \includegraphics[width=0.9\linewidth, height=4cm]{barplot_matrix_predict_chemdiv.png} 
-        \caption{}
-        %%\label{fig:subim1}
-    \end{subfigure}
-    \begin{subfigure}{1\textwidth}
-        \includegraphics[width=0.9\linewidth, height=4cm]{barplot_matrix_predict_zinc.png}
-        \caption{}
-        %%\label{fig:subim2}
-    \end{subfigure}
-    
-    \caption{Barplot matrix analysis from predicted results among IC50. (a)Fist predict, Chemdiv (b)Second predict, Zinc }
-    \label{Figure16}
-\end{figure*}
-
+ \begin{figure}[h]
+    \centering 
+     \includegraphics[width=0.6\textwidth]{best_similarity_resultspred.png}	
+     \caption{Results from the similarity analysis from the two predicted results.} 
+     \label{Figure16}
+ \end{figure}
 
  We conclude the analysis with a similarity test of the top 10 molecules selected from each of the datasets resulting from the predictions (Table~\ref{Figure13}). Using the Tanimoto coefficient, a score of 1 exactly similarity, while 0 indicates no similarity. It is important to note that in all cases, very low similarity values are observed, with a maximum value of 0.2.
 
- Upon examining the images of the top 10 molecules from the first set of predictions (Figure{\ref{Figure14}}), the top 10 molecules from the second set of predictions (Figure~\ref{Figure15}), and referring to Table~\ref{Figure13}, we observe that the molecules with the highest similarity values within the results are M1 from Figure~\ref{Figure14} with M5 and M7 from Figure~\ref{Figure15}, both having a value of 0.207. The next best similarity results at value 0.2 , are for M4 on Figure~\ref{Figure14} also with M5 and M7 on Figure~\ref{Figure15}. 
+ Upon examining the images of the top 10 molecules from the first set of predictions (Figure{\ref{Figure15}}), the top 10 molecules from the second set of predictions (Figure~\ref{Figure16}), and referring to Table~\ref{Figure14}, we observe that the molecules with the highest similarity values within the results are M1 from Figure~\ref{Figure15} with M5 and M7 from Figure~\ref{Figure16}, both having a value of 0.207. The next best similarity results at value 0.2 , are for M4 on Figure~\ref{Figure14} also with M5 and M7 on Figure~\ref{Figure16}. 
  
 
 \section{Discussion}
@@ -522,11 +540,11 @@ When analyzing the results of the different Chemprop trainings, we have used tra
 
 The most desviated result from a well-fitted model was observed in training 1, which can be attributed to the fact that this training was performed with a dataframe containing very raw data, with many repeated SMILES, which could have affected the machine learning model. Therefore, we can see how the importance of good data cleaning is reflected in the training results.
 
-Upon analyzing the prediction model versus the trained model, we observe that for the data of greatest interest to us, those with higher IC50 values, the regression line shows an increase in dispersion (see figure). This indicates that our model is not entirely reliable, especially for results where IC50 is crucial for inhibitor discovery.
+Upon analyzing the prediction model versus the trained model, we observe that for the data of greatest interest to us, those with higher IC50 values, the regression line shows an increase in dispersion (see Figure~\ref{Figure6}. This indicates that our model is not entirely reliable, especially for results where IC50 is crucial for inhibitor discovery.
 
-Regarding the features analyzed in the prediction results based on the correlation of variables, in all three cases analyzed (see Figures~\ref{Figure7},~\ref{Figure9},~\ref{Figure12}), we can see a strong correlation between the MW and Heavy Atom Count features. This may be due to the fact that heavier molecules tend to have more heavy atoms.
+Regarding the features analyzed in the prediction results based on the correlation of variables, in all three cases analyzed (see Figures~\ref{Figure7},~\ref{Figure9},~\ref{Figure13}), we can see a strong correlation between the MW and Heavy Atom Count features. This may be due to the fact that heavier molecules tend to have more heavy atoms.
 
-As for the relationship between variables and the IC50 value, the analysis suggests that in none of the three datasets is there a strong correlation with this variable, particularly in the training dataset. This indicates that a strong interaction activity is not significantly correlated with these chemical characteristics. Nonetheless, in Figure~\ref{Figure16} of the predictions, we can observe how it supports the results of the correlation heatmap, where it is evident that the variables H-bond acceptor, TPSA, Heavy Atom Counts, and Rotatable Bonds are the ones with the highest values.
+As for the relationship between variables and the IC50 value, the analysis suggests that in none of the three datasets is there a strong correlation with this variable, particularly in the training dataset. This indicates that a strong interaction activity is not significantly correlated with these chemical characteristics. Nonetheless, in Figure~\ref{Figure12} of the predictions, we can observe how it supports the results of the correlation heatmap, where it is evident that the variables H-bond acceptor, TPSA, Heavy Atom Counts, and Rotatable Bonds are the ones with the highest values.
 
 Finally, regarding the similarity analysis, we have been unable to obtain conclusive results because the maximum similarity values are very low and, therefore, unreliable. However, we have observed that molecules M5 and M7 from the second training set, based on zinc data, are highly similar. We have confirmed this initially through Figure X and secondly by noticing that they share the same similarity values with a specific molecule from the first Chemdiv training set. This could serve as a starting point for further research to understand the characteristics of these molecules.
 
@@ -559,8 +577,4 @@ The code used for this study is available on the following GitHub repository: \h
 \bibliographystyle{unsrt} 
 \bibliography{library_tfm}
 
-
 \end{document}
-
-%%\endinput
-
